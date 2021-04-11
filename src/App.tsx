@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import "./App.css";
+import GuitarNeck from "./Components/GuitarNeck";
+import ApplicationContextProvider from "./Context/Context";
+
+const MainWrapper = styled.div`
+  display: flex;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApplicationContextProvider>
+      <div className="App">
+        <MainWrapper>
+          <GuitarNeck />
+        </MainWrapper>
+      </div>
+    </ApplicationContextProvider>
   );
 }
 
