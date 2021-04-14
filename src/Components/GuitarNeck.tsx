@@ -4,6 +4,7 @@ import Color from '../Colors';
 import { AppContext } from '../Context/Context';
 import MediaQueries from '../Helpers/MediaQueries';
 import GuitarFret from './GuitarFret';
+import GuitarString from './GuitarString';
 
 const Container = styled.div`
   min-width: 300px;
@@ -22,12 +23,17 @@ const Container = styled.div`
 const StringContainer = styled.div`
   position: absolute;
   height: 100%;
-  width: 110%;
+  width: 101%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   z-index: -10;
-  left: -10%;
+  left: -1%;
+
+  @media ${MediaQueries.aboveTablet} {
+    width: 110%;
+    left: -10%;
+  }
 `;
 
 const StyledGuitarString = styled.div`
@@ -35,10 +41,6 @@ const StyledGuitarString = styled.div`
   height: 2px;
   background: ${Color.LightGrey};
 `;
-
-interface Fret {
-  onCapo?: boolean;
-}
 
 const GuitarNeck: FC = () => {
   const frets: number[] = [1, 2, 3, 4, 5, 6, 7];
@@ -64,12 +66,12 @@ const GuitarNeck: FC = () => {
       ))}
 
       <StringContainer>
-        <StyledGuitarString />
-        <StyledGuitarString />
-        <StyledGuitarString />
-        <StyledGuitarString />
-        <StyledGuitarString />
-        <StyledGuitarString />
+        <GuitarString />
+        <GuitarString />
+        <GuitarString />
+        <GuitarString />
+        <GuitarString />
+        <GuitarString />
       </StringContainer>
     </Container>
   );

@@ -11,6 +11,6 @@ export enum Chord {
   A = 'A',
   Bb = 'B flat',
   B = 'B',
-};
+}
 
 export const allBaseChords = Object.values(Chord);
