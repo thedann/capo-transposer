@@ -7,6 +7,9 @@ const StyledFret = styled.div<{ capoOn?: boolean }>`
 
   background: ${({ capoOn }) => (capoOn ? "black" : "white")};
   border: 1px solid black;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 interface GuitarFretProp {
