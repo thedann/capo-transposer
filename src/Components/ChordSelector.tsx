@@ -1,7 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
-import { Chord } from '../Helpers/Chords';
+import { allBaseChords, Chord } from '../Helpers/Chords';
 import Color from '../Colors';
+import { AppContext } from '../Context/Context';
 
 const StyledUl = styled.ul`
   height: 10rem;
@@ -44,16 +45,14 @@ const StyledLi = styled.li<{ selected?: boolean }>`
 `;
 
 const ChordSelector: FC = () => {
-  const [currentChord, setCurrentChord] = useState<Chord>(Chord.C);
-
-  const allBaseChords = Object.values(Chord);
+  const { currentChord, updateCurrentChord } = useContext(AppContext);
 
   return (
     <StyledUl>
       {allBaseChords.map((chord) => (
         <StyledLi
           selected={currentChord === chord}
-          onClick={() => setCurrentChord(chord)}
+          onClick={() => updateCurrentChord(chord)}
         >
           {chord}
         </StyledLi>

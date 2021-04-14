@@ -38,11 +38,20 @@ const GuitarNeck: FC = () => {
 
   const { capoFret, updateCapo } = useContext(AppContext);
 
+  const onFretClick = (index: number) => {
+    const newIndex = index + 1;
+    if (newIndex === capoFret) {
+      updateCapo(0);
+    } else {
+      updateCapo(index + 1);
+    }
+  };
+
   return (
     <Container>
       {frets.map((fret, index) => (
         <GuitarFret
-          onClick={() => updateCapo(index + 1)}
+          onClick={() => onFretClick(index)}
           capoOn={capoFret === index + 1}
         />
       ))}

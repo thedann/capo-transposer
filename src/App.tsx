@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import './App.css';
 import ChordSelector from './Components/ChordSelector';
 import GuitarNeck from './Components/GuitarNeck';
+import TransposedChord from './Components/TransposedChord';
 import ApplicationContextProvider from './Context/Context';
 
 const BodyWrapper = styled.div`
@@ -49,6 +50,7 @@ function App() {
                 <span>|</span>
                 <span>^</span>
               </StyledArrowDown>
+              <TransposedChord />
             </ChordWrapper>
           </MainWrapper>
         </BodyWrapper>
