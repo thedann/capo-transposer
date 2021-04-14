@@ -4,7 +4,28 @@ import { AppContext } from '../Context/Context';
 import { allBaseChords } from '../Helpers/Chords';
 
 const StyledChord = styled.div`
-  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledCircle = styled.div`
+  border-radius: 80px;
+  border: 1px solid yellowgreen;
+  background: yellowgreen;
+  width: 6rem;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+
+  p {
+    font-size: 4rem;
+    height: 4rem;
+    margin: 0;
+    margin-bottom: 78px;
+    margin-block-end: 0;
+    margin-block-start: 0;
+
+  }
 `;
 
 const TransposedChord: FC = () => {
@@ -16,7 +37,7 @@ const TransposedChord: FC = () => {
     let actualNewIndex = 0;
 
     if (newChordIndex > allBaseChords.length - 1) {
-      actualNewIndex = newChordIndex - (allBaseChords.length);
+      actualNewIndex = newChordIndex - allBaseChords.length;
     } else {
       actualNewIndex = newChordIndex;
     }
@@ -24,7 +45,13 @@ const TransposedChord: FC = () => {
     return allBaseChords[actualNewIndex];
   };
 
-  return <StyledChord>{transpose()}</StyledChord>;
+  return (
+    <StyledChord>
+      <StyledCircle>
+        <p>{transpose()}</p>
+      </StyledCircle>
+    </StyledChord>
+  );
 };
 
 export default TransposedChord;
