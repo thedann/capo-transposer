@@ -2,25 +2,32 @@ import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import Color from '../Colors';
 import { AppContext } from '../Context/Context';
+import MediaQueries from '../Helpers/MediaQueries';
 import GuitarFret from './GuitarFret';
 
 const Container = styled.div`
-  min-width: 500px;
+  min-width: 300px;
   max-width: 800px;
   height: 10rem;
   display: flex;
   justify-content: space-between;
   position: relative;
+
+  @media ${MediaQueries.aboveTablet} {
+    min-width: 700px;
+    max-width: 800px;
+  }
 `;
 
 const StringContainer = styled.div`
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 110%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   z-index: -10;
+  left: -10%;
 `;
 
 const StyledGuitarString = styled.div`
@@ -34,27 +41,28 @@ interface Fret {
 }
 
 const GuitarNeck: FC = () => {
-  const frets: Fret[] = [{}, {}, {}, {}, {}];
+  const frets: number[] = [1, 2, 3, 4, 5, 6, 7];
 
   const { capoFret, updateCapo } = useContext(AppContext);
 
-  const onFretClick = (index: number) => {
-    const newIndex = index + 1;
-    if (newIndex === capoFret) {
+  const onFretClick = (fretNumber: number) => {
+    if (fretNumber === capoFret) {
       updateCapo(0);
     } else {
-      updateCapo(index + 1);
+      updateCapo(fretNumber);
     }
   };
 
   return (
     <Container>
-      {frets.map((fret, index) => (
+      {frets.map((fretNumber) => (
         <GuitarFret
-          onClick={() => onFretClick(index)}
-          capoOn={capoFret === index + 1}
+          onClick={() => onFretClick(fretNumber)}
+          capoOn={capoFret === fretNumber}
+          number={fretNumber}
         />
       ))}
+
       <StringContainer>
         <StyledGuitarString />
         <StyledGuitarString />
