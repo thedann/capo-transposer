@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import Color from '../Colors';
+import Color from '../Helpers/Colors';
 
 const StyledGuitarString = styled.div`
   width: 100%;
@@ -8,23 +8,27 @@ const StyledGuitarString = styled.div`
   background: ${Color.LightGrey};
   display: flex;
   justify-content: space-between;
+  position: relative;
 `;
 
-const StyledDot = styled.div`
+const StyledDot = styled.div<{ stringToBePlayedAt?: number }>`
   border-radius: 40px;
   border: 1px solid black;
-  width: 4px;
-  height: 4px;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -5px;
+  left: ${({ stringToBePlayedAt }) =>
+    stringToBePlayedAt ? `${stringToBePlayedAt * 15}%` : '1px'};
 `;
 
-const GuitarString: FC = () => (
+interface StringProps {
+  toBePlayedAt?: null | number;
+}
+
+const GuitarString: FC<StringProps> = ({ toBePlayedAt }) => (
   <StyledGuitarString>
-    {/* <StyledDot />
-    <StyledDot />
-    <StyledDot />
-    <StyledDot />
-    <StyledDot />
-    <StyledDot /> */}
+    {toBePlayedAt && <StyledDot stringToBePlayedAt={toBePlayedAt} />}
   </StyledGuitarString>
 );
 

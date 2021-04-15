@@ -1,7 +1,7 @@
 import React, { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { allBaseChords, Chord } from '../Helpers/Chords';
-import Color from '../Colors';
+import Color from '../Helpers/Colors';
 import { AppContext } from '../Context/Context';
 
 const StyledUl = styled.ul`
@@ -53,6 +53,7 @@ const ChordSelector: FC = () => {
         <StyledLi
           selected={currentChord === chord}
           onClick={() => updateCurrentChord(chord)}
+          key={chord}
         >
           {chord}
         </StyledLi>

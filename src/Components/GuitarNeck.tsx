@@ -1,10 +1,11 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Color from '../Colors';
+import Color from '../Helpers/Colors';
 import { AppContext } from '../Context/Context';
 import MediaQueries from '../Helpers/MediaQueries';
 import GuitarFret from './GuitarFret';
 import GuitarString from './GuitarString';
+import chordGrip from '../Helpers/ChordGrip';
 
 const Container = styled.div`
   min-width: 300px;
@@ -13,6 +14,8 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 
   @media ${MediaQueries.aboveTablet} {
     min-width: 700px;
@@ -22,13 +25,14 @@ const Container = styled.div`
 
 const StringContainer = styled.div`
   position: absolute;
-  height: 100%;
+  height: 80%;
   width: 101%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   z-index: -10;
   left: -1%;
+  top: 10%;
 
   @media ${MediaQueries.aboveTablet} {
     width: 110%;
@@ -36,16 +40,15 @@ const StringContainer = styled.div`
   }
 `;
 
-const StyledGuitarString = styled.div`
-  width: 100%;
-  height: 2px;
-  background: ${Color.LightGrey};
-`;
-
 const GuitarNeck: FC = () => {
   const frets: number[] = [1, 2, 3, 4, 5, 6, 7];
 
-  const { capoFret, updateCapo } = useContext(AppContext);
+  const { capoFret, updateCapo, currentChord } = useContext(AppContext);
+  const [currentGrip, setCurrentGrip] = useState(chordGrip(currentChord));
+
+  useEffect(() => {
+    setCurrentGrip(chordGrip(currentChord));
+  }, [currentChord, capoFret]);
 
   const onFretClick = (fretNumber: number) => {
     if (fretNumber === capoFret) {
@@ -57,21 +60,23 @@ const GuitarNeck: FC = () => {
 
   return (
     <Container>
-      {frets.map((fretNumber) => (
+      {frets.map((fretNumber, index) => (
         <GuitarFret
           onClick={() => onFretClick(fretNumber)}
           capoOn={capoFret === fretNumber}
           number={fretNumber}
+          key={index}
         />
       ))}
 
       <StringContainer>
+        {currentGrip && currentGrip.map((guitarString) => <GuitarString toBePlayedAt={guitarString} />)}
+        {/* <GuitarString />
         <GuitarString />
         <GuitarString />
         <GuitarString />
         <GuitarString />
-        <GuitarString />
-        <GuitarString />
+        <GuitarString /> */}
       </StringContainer>
     </Container>
   );
