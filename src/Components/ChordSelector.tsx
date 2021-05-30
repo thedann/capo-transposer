@@ -3,35 +3,9 @@ import styled from 'styled-components';
 import { allBaseChords, Chord } from '../Helpers/Chords';
 import Color from '../Helpers/Colors';
 import { AppContext } from '../Context/Context';
+import { StyledUl } from '../CommonStyling';
 
-const StyledUl = styled.ul`
-  height: 10rem;
-  overflow: auto;
-  scroll-behavior: smooth;
-  list-style: none;
-  padding: 0;
 
-  /* width */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: ${Color.LightGrey};
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: ${Color.Grey};
-    border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: ${Color.DarkGrey};
-  }
-`;
 
 const StyledLi = styled.li<{ selected?: boolean }>`
   font-size: 2rem;

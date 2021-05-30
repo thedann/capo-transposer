@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import './App.css';
+import CapoSelector from './Components/CapoSelector';
 import ChordSelector from './Components/ChordSelector';
 import GuitarNeck from './Components/GuitarNeck';
 import TransposedChord from './Components/TransposedChord';
@@ -14,20 +15,24 @@ const BodyWrapper = styled.div`
 
 const MainWrapper = styled.div`
   display: flex;
-
-  height: 80vh;
+  flex-direction: column;
+  width: 100%;
   justify-content: center;
   padding-top: 2rem;
 
   @media ${MediaQueries.aboveTablet} {
     border: 1px solid black;
-    min-width: 80%;
+    width: 80%;
   }
 `;
 
 const ChordWrapper = styled.div`
   display: flex;
+  margin-top: 2rem;
+  max-height: 20rem;
+  height: 30rem;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 const StyledArrowDown = styled.div`
@@ -48,15 +53,16 @@ function App() {
       <div className='App'>
         <BodyWrapper>
           <MainWrapper>
+            <GuitarNeck />
             <ChordWrapper>
-              <GuitarNeck />
+              <CapoSelector />
               <ChordSelector />
-              <StyledArrowDown>
-                <span>|</span>
-                <span>^</span>
-              </StyledArrowDown>
-              <TransposedChord />
             </ChordWrapper>
+            <StyledArrowDown>
+              <span>|</span>
+              <span>^</span>
+            </StyledArrowDown>
+            <TransposedChord />
           </MainWrapper>
         </BodyWrapper>
       </div>

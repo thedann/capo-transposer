@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Color from '../Helpers/Colors';
 
 const StyledGuitarString = styled.div`
-  width: 100%;
-  height: 2px;
+  width: 2px;
+  height: 100%;
   background: ${Color.LightGrey};
   display: flex;
   justify-content: space-between;
