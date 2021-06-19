@@ -69,13 +69,15 @@ const GuitarFret: FC<GuitarFretProp> = ({ onClick, fretNumber }) => {
     grip: (number | null)[],
     fretNumber: number
   ) => {
-    const stringsForThisFret = grip.map((stringNumber, index) => {
-      if (stringNumber === null) {
+    const stringsForThisFret = grip.map((fretForThisString, index) => {
+      if (fretForThisString === null) {
         // string should not be played anywhere
         return null;
       }
-      if (stringNumber === fretNumber) {
-        return stringNumber;
+      if (fretForThisString === fretNumber && capoFret > 0) {
+        return fretForThisString + 1;
+      } else if (fretForThisString === fretNumber) {
+        return fretForThisString;
       }
       return null;
     });
@@ -86,9 +88,7 @@ const GuitarFret: FC<GuitarFretProp> = ({ onClick, fretNumber }) => {
 
   const renderDots = (fretToBePlayed: number | null, index: number) => {
     console.log('fretToBePlayed zzzz + ' + index, fretToBePlayed);
-    return (
-       <StyledDot toBePlayedAt={fretToBePlayed} />
-    );
+    return <StyledDot toBePlayedAt={fretToBePlayed} />;
   };
 
   const calculateFretNumber = (capo: number, fret: number) => {
