@@ -2,6 +2,7 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AppContext } from '../Context/Context';
 import chordGrip from '../Helpers/ChordGrip';
+import Color from '../Helpers/Colors';
 import GuitarFret from './GuitarFret';
 import GuitarString from './GuitarString';
 
@@ -19,8 +20,8 @@ const Neck = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 1px solid ${Color.DarkGrey};
+  border-right: 1px solid ${Color.DarkGrey};
 `;
 
 const StringContainer = styled.div`
@@ -41,7 +42,7 @@ const StyledCapo = styled.div`
   z-index: 1;
   position: absolute;
   left: -1rem;
-  top: 1rem;
+  top: 0.5rem;
 `;
 
 const StyledCapoCurve = styled.div`
@@ -68,11 +69,12 @@ const GuitarNeck: FC = () => {
     <Container>
       <Neck>
         {frets.map((fretNumber, index) => (
-          <GuitarFret number={fretNumber} key={index} />
+          <GuitarFret fretNumber={fretNumber} key={index} />
         ))}
 
         <StringContainer>
-          {currentGrip && currentGrip.map((whereToBePlayed) => <GuitarString toBePlayedAt={whereToBePlayed} />)}
+          {currentGrip &&
+            currentGrip.map((whereToBePlayed) => <GuitarString />)}
           {capoFret > 0 && (
             <StyledCapo>
               <StyledCapoCurve />

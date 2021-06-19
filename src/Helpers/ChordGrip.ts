@@ -4,7 +4,7 @@ const chordGrip = (chord: Chord) => {
   let result: (number | null)[] = [];
   switch (chord) {
     case Chord.C:
-      result = [null, 3, 0, 2, 1, 0];
+      result = [null, 3, 2, 0, 1, 0];
       break;
     case Chord.Csharp:
       result = [null, 4, 6, 6, 6, null];
@@ -25,7 +25,7 @@ const chordGrip = (chord: Chord) => {
       result = [2, 4, 4, 3, 2, 2];
       break;
     case Chord.G:
-      result = [3, 2, 0, 0, 0, 1];
+      result = [3, 2, 0, 0, 0, 3];
       break;
     case Chord.Gsharp:
       result = [4, 6, 6, 5, 4, 4];

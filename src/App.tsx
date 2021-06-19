@@ -18,7 +18,7 @@ const MainWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   justify-content: center;
-  padding-top: 2rem;
+  padding-top: 0.5rem;
 
   @media ${MediaQueries.aboveTablet} {
     border: 1px solid black;
@@ -28,7 +28,7 @@ const MainWrapper = styled.div`
 
 const ChordWrapper = styled.div`
   display: flex;
-  margin-top: 2rem;
+  margin-top: 1rem;
   max-height: 20rem;
   height: 30rem;
   flex-direction: column;
