@@ -2,6 +2,7 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { AppContext } from '../Context/Context';
 import chordGrip from '../Helpers/ChordGrip';
+import { Chord } from '../Helpers/Chords';
 import MediaQueries from '../Helpers/MediaQueries';
 
 const FretWrapper = styled.div`
@@ -33,13 +34,13 @@ const StyledNumber = styled.p`
   margin-right: auto;
 `;
 
-const StyledDot = styled.div<{ toBePlayedAt: number | null }>`
+const StyledDot = styled.div<{ shouldBeVisible: number | null }>`
   border-radius: 40px;
   border: 1px solid black;
   background: grey;
   width: 10px;
   height: 10px;
-  visibility: ${({ toBePlayedAt }) => (toBePlayedAt ? 'visible' : 'hidden')};
+  visibility: ${({ shouldBeVisible: toBePlayedAt }) => (toBePlayedAt ? 'visible' : 'hidden')};
 `;
 
 interface GuitarFretProp {
@@ -50,22 +51,26 @@ interface GuitarFretProp {
 const GuitarFret: FC<GuitarFretProp> = ({ onClick, fretNumber }) => {
   const { capoFret, currentChord } = useContext(AppContext);
 
-  const [currentGrip, setCurrentGrip] = useState(chordGrip(currentChord));
-  const [stringsToBePlayed, setStringsToBePlayed] = useState<(number | null)[]>(
+  const [currentGrip, setCurrentGrip] = useState(
+    chordGrip(currentChord, capoFret)
+  );
+  const [allStrings, setAllStrings] = useState<(number | null)[]>(
     []
   );
 
   useEffect(() => {
-    setCurrentGrip(chordGrip(currentChord));
+    setCurrentGrip(chordGrip(currentChord, capoFret));
   }, [currentChord]);
 
   useEffect(() => {
-    setStringsToBePlayed(
-      getAllStringsToBePlayedAtThisFret(currentGrip, fretNumber)
-    );
-  }, [currentGrip, capoFret]);
+    console.log('updatera capooo', capoFret);
 
-  const getAllStringsToBePlayedAtThisFret = (
+    setAllStrings(
+      updateStringsBasedOnCurrentGripAndFretNumber(currentGrip, fretNumber)
+    );
+  }, [capoFret]);
+
+  const updateStringsBasedOnCurrentGripAndFretNumber = (
     grip: (number | null)[],
     fretNumber: number
   ) => {
@@ -75,20 +80,27 @@ const GuitarFret: FC<GuitarFretProp> = ({ onClick, fretNumber }) => {
         return null;
       }
       if (fretForThisString === fretNumber && capoFret > 0) {
-        return fretForThisString + 1;
+        return fretForThisString + capoFret;
       } else if (fretForThisString === fretNumber) {
         return fretForThisString;
       }
       return null;
     });
-    console.log('stringsForThisFret ' + fretNumber, stringsForThisFret);
 
     return stringsForThisFret;
   };
 
   const renderDots = (fretToBePlayed: number | null, index: number) => {
-    console.log('fretToBePlayed zzzz + ' + index, fretToBePlayed);
-    return <StyledDot toBePlayedAt={fretToBePlayed} />;
+    return (
+      <StyledDot
+        key={index}
+        shouldBeVisible={dotShouldBeVisible(fretToBePlayed)}
+      />
+    );
+  };
+
+  const dotShouldBeVisible = (toBePlayedAt: number | null) => {
+    return !!toBePlayedAt && toBePlayedAt != capoFret ? toBePlayedAt : null;
   };
 
   const calculateFretNumber = (capo: number, fret: number) => {
@@ -105,7 +117,7 @@ const GuitarFret: FC<GuitarFretProp> = ({ onClick, fretNumber }) => {
         {capoFret > 0 ? calculateFretNumber(capoFret, fretNumber) : fretNumber}
       </StyledNumber>
       <StyledFret>
-        {stringsToBePlayed.map((string, index) => renderDots(string, index))}
+        {allStrings.map((string, index) => renderDots(string, index))}
         {/* <StyledDot toBePlayed={currentGrip[fretNumber]} /> */}
       </StyledFret>
     </FretWrapper>

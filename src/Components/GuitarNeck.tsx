@@ -1,7 +1,6 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { AppContext } from '../Context/Context';
-import chordGrip from '../Helpers/ChordGrip';
 import Color from '../Helpers/Colors';
 import GuitarFret from './GuitarFret';
 import GuitarString from './GuitarString';
@@ -57,13 +56,9 @@ const StyledCapoCurve = styled.div`
 
 const GuitarNeck: FC = () => {
   const frets: number[] = [1, 2, 3, 4, 5, 6, 7];
+  const guitarStrings: number[] = [1, 2, 3, 4, 5, 6];
 
-  const { capoFret, currentChord } = useContext(AppContext);
-  const [currentGrip, setCurrentGrip] = useState(chordGrip(currentChord));
-
-  useEffect(() => {
-    setCurrentGrip(chordGrip(currentChord));
-  }, [currentChord, capoFret]);
+  const { capoFret } = useContext(AppContext);
 
   return (
     <Container>
@@ -73,8 +68,10 @@ const GuitarNeck: FC = () => {
         ))}
 
         <StringContainer>
-          {currentGrip &&
-            currentGrip.map((whereToBePlayed) => <GuitarString />)}
+          {guitarStrings &&
+            guitarStrings.map((guitarString) => (
+              <GuitarString key={guitarString} />
+            ))}
           {capoFret > 0 && (
             <StyledCapo>
               <StyledCapoCurve />

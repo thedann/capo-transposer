@@ -35,7 +35,11 @@ const CapoSelector: FC = () => {
   return (
     <StyledUl>
       {capoFrets.map((fret) => (
-        <CapoLi selected={capoFret === fret} onClick={() => onFretClick(fret)}>
+        <CapoLi
+          key={fret}
+          selected={capoFret === fret}
+          onClick={() => onFretClick(fret)}
+        >
           {fretText(fret)}
         </CapoLi>
       ))}

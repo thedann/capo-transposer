@@ -1,6 +1,6 @@
 import { Chord } from './Chords';
 
-const chordGrip = (chord: Chord) => {
+const chordGrip = (chord: Chord, capoFret: number | null) => {
   let result: (number | null)[] = [];
   switch (chord) {
     case Chord.C:
@@ -43,8 +43,15 @@ const chordGrip = (chord: Chord) => {
     default:
       break;
   }
+
+  if (capoFret && capoFret > 0) {
+    const newResult = result.map((guitarString) => {
+      return guitarString !== null ? guitarString + 1 : guitarString;
+    });
+    return newResult;
+  }
+
   return result;
 };
-
 
 export default chordGrip;
