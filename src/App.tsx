@@ -55,7 +55,9 @@ function App() {
           <MainWrapper>
             <GuitarNeck />
             <ChordWrapper>
+              <h4>Select Capo</h4>
               <CapoSelector />
+              <h4>Select Chord grip</h4>
               <ChordSelector />
             </ChordWrapper>
             <StyledArrowDown>

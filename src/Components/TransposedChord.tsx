@@ -9,10 +9,9 @@ const StyledChord = styled.div`
 `;
 
 const StyledCircle = styled.div`
-  border-radius: 80px;
   border: 1px solid yellowgreen;
   background: yellowgreen;
-  width: 6rem;
+  width: 100%;
   height: 6rem;
   display: flex;
   justify-content: center;
