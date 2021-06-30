@@ -1,7 +1,9 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AppContext } from '../Context/Context';
+import chordGrip from '../Helpers/ChordGrip';
 import Color from '../Helpers/Colors';
+import { fretType } from '../Helpers/FretType';
 import GuitarFret from './GuitarFret';
 import GuitarString from './GuitarString';
 
@@ -58,13 +60,55 @@ const GuitarNeck: FC = () => {
   const frets: number[] = [1, 2, 3, 4, 5, 6, 7];
   const guitarStrings: number[] = [1, 2, 3, 4, 5, 6];
 
-  const { capoFret } = useContext(AppContext);
+  const { capoFret, currentChord } = useContext(AppContext);
+
+  const [currentGrip, setCurrentGrip] = useState(
+    chordGrip(currentChord, capoFret)
+  );
+
+  useEffect(() => {
+    setCurrentGrip(chordGrip(currentChord, capoFret));
+  }, [currentChord, capoFret]);
+
+  // const updateStringsBasedOnCurrentGripAndFretNumber = (
+  //   grip: fretType[],
+  //   fretNumber: number
+  // ) => {
+  //   const stringsForThisFret = grip.map((fretForThisString, index) => {
+  //     if (fretForThisString === null) {
+  //       // string should not be played anywhere
+  //       return null;
+  //     }
+  //     if (fretForThisString === fretNumber && capoFret > 0) {
+  //       return fretForThisString + capoFret;
+  //     } else if (fretForThisString === fretNumber) {
+  //       return fretForThisString;
+  //     }
+  //     return null;
+  //   });
+
+  //   return stringsForThisFret;
+  // };
+
+  const getStringsForThisFret = (fretNumber: number) => {
+    const guitarStringsToBePlayed = currentGrip.map(
+      (guitarString) => guitarString === fretNumber ? guitarString : null
+    );
+
+    return guitarStringsToBePlayed;
+  };
 
   return (
     <Container>
       <Neck>
         {frets.map((fretNumber, index) => (
-          <GuitarFret fretNumber={fretNumber} key={index} />
+          <GuitarFret
+            fretNumber={fretNumber}
+            guitarStringsThatShouldBePlayedAtThisFret={getStringsForThisFret(
+              fretNumber
+            )}
+            key={index}
+          />
         ))}
 
         <StringContainer>
