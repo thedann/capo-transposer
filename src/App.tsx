@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import './App.css';
 import CapoSelector from './Components/CapoSelector';
 import ChordSelector from './Components/ChordSelector';
 import GuitarNeck from './Components/GuitarNeck';
 import TransposedChord from './Components/TransposedChord';
-import ApplicationContextProvider from './Context/Context';
+import ApplicationContextProvider, { AppContext } from './Context/Context';
 import MediaQueries from './Helpers/MediaQueries';
 
 const BodyWrapper = styled.div`
@@ -21,35 +22,36 @@ const MainWrapper = styled.div`
   padding-top: 0.5rem;
 
   @media ${MediaQueries.aboveTablet} {
-    border: 1px solid black;
     width: 80%;
   }
 `;
 
 const ChordWrapper = styled.div`
   display: flex;
-  margin-top: 1rem;
   max-height: 20rem;
   height: 30rem;
   flex-direction: column;
   justify-content: space-between;
 `;
 
-const StyledArrowDown = styled.div`
-  display: flex;
-  flex-direction: column;
+const StyledTransposedTo = styled.div`
   font-size: 2rem;
   margin: 1rem 0;
-
-  span {
-    transform: rotate(180deg);
-    height: 1rem;
-  }
 `;
 
 function App() {
+  const { capoFret } = useContext(AppContext);
+
   return (
     <ApplicationContextProvider>
+      <Helmet>
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' cross-origin />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Lato&display=swap'
+          rel='stylesheet'
+        />
+      </Helmet>
       <div className='App'>
         <BodyWrapper>
           <MainWrapper>
@@ -60,10 +62,9 @@ function App() {
               <h4>Select Chord grip</h4>
               <ChordSelector />
             </ChordWrapper>
-            <StyledArrowDown>
-              <span>|</span>
-              <span>^</span>
-            </StyledArrowDown>
+            <StyledTransposedTo>
+              <span>Transpose to 👇</span>
+            </StyledTransposedTo>
             <TransposedChord />
           </MainWrapper>
         </BodyWrapper>

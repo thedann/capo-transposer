@@ -11,16 +11,22 @@ const StyledGuitarString = styled.div`
   position: relative;
 `;
 
-
+const StyledGuitarStringName = styled.div`
+  position: absolute;
+  top: -1.25rem;
+  left: -0.25rem;
+`;
 
 interface StringProps {
-  toBePlayedAt?: null | number;
+  name: string;
 }
 
-const GuitarString: FC<StringProps> = ({ toBePlayedAt }) => (
-  <StyledGuitarString>
-    {/* {toBePlayedAt && <StyledDot stringToBePlayedAt={toBePlayedAt} />} */}
-  </StyledGuitarString>
+const GuitarString: FC<StringProps> = ({ name }) => (
+  <>
+    <StyledGuitarString>
+      <StyledGuitarStringName>{name}</StyledGuitarStringName>
+    </StyledGuitarString>
+  </>
 );
 
 export default GuitarString;

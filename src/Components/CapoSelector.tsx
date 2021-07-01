@@ -16,7 +16,7 @@ const CapoLi = styled.li<{ selected?: boolean }>`
 `;
 
 const CapoSelector: FC = () => {
-  const { capoFret, updateCapo, currentChord } = useContext(AppContext);
+  const { capoFret, updateCapo } = useContext(AppContext);
 
   const capoFrets = [0, 1, 2, 3, 4, 5, 6];
 

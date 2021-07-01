@@ -58,7 +58,7 @@ const StyledCapoCurve = styled.div`
 
 const GuitarNeck: FC = () => {
   const frets: number[] = [1, 2, 3, 4, 5, 6, 7];
-  const guitarStrings: number[] = [1, 2, 3, 4, 5, 6];
+  const guitarStrings: string[] = ['E', 'A', 'D', 'G', 'B', 'e'];
 
   const { capoFret, currentChord } = useContext(AppContext);
 
@@ -70,29 +70,9 @@ const GuitarNeck: FC = () => {
     setCurrentGrip(chordGrip(currentChord, capoFret));
   }, [currentChord, capoFret]);
 
-  // const updateStringsBasedOnCurrentGripAndFretNumber = (
-  //   grip: fretType[],
-  //   fretNumber: number
-  // ) => {
-  //   const stringsForThisFret = grip.map((fretForThisString, index) => {
-  //     if (fretForThisString === null) {
-  //       // string should not be played anywhere
-  //       return null;
-  //     }
-  //     if (fretForThisString === fretNumber && capoFret > 0) {
-  //       return fretForThisString + capoFret;
-  //     } else if (fretForThisString === fretNumber) {
-  //       return fretForThisString;
-  //     }
-  //     return null;
-  //   });
-
-  //   return stringsForThisFret;
-  // };
-
   const getStringsForThisFret = (fretNumber: number) => {
-    const guitarStringsToBePlayed = currentGrip.map(
-      (guitarString) => guitarString === fretNumber ? guitarString : null
+    const guitarStringsToBePlayed = currentGrip.map((guitarString) =>
+      guitarString === fretNumber ? guitarString : null
     );
 
     return guitarStringsToBePlayed;
@@ -114,7 +94,7 @@ const GuitarNeck: FC = () => {
         <StringContainer>
           {guitarStrings &&
             guitarStrings.map((guitarString) => (
-              <GuitarString key={guitarString} />
+              <GuitarString name={guitarString} key={guitarString} />
             ))}
           {capoFret > 0 && (
             <StyledCapo>
