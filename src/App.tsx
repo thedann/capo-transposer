@@ -19,7 +19,7 @@ const MainWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   justify-content: center;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
 
   @media ${MediaQueries.aboveTablet} {
     width: 80%;

@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const Neck = styled.div`
   width: 8rem;
-  height: 8rem;
+  height: 9rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,7 +57,7 @@ const StyledCapoCurve = styled.div`
 `;
 
 const GuitarNeck: FC = () => {
-  const frets: number[] = [1, 2, 3, 4, 5, 6, 7];
+  const frets: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const guitarStrings: string[] = ['E', 'A', 'D', 'G', 'B', 'e'];
 
   const { capoFret, currentChord } = useContext(AppContext);
