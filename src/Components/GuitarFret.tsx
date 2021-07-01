@@ -21,9 +21,10 @@ const StyledFret = styled.div<{ capoOn?: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
   position: relative;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const StyledNumber = styled.p`
@@ -40,6 +41,7 @@ const StyledDot = styled.div<{ shouldBeVisible: number | null }>`
   background: grey;
   width: 10px;
   height: 10px;
+  z-index: 2;
   visibility: ${({ shouldBeVisible: toBePlayedAt }) =>
     toBePlayedAt ? 'visible' : 'hidden'};
 `;

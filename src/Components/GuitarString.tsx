@@ -9,6 +9,7 @@ const StyledGuitarString = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
+  z-index: 1;
 `;
 
 const StyledGuitarStringName = styled.div`

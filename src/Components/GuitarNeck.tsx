@@ -23,6 +23,7 @@ const Neck = styled.div`
   position: relative;
   border-left: 1px solid ${Color.DarkGrey};
   border-right: 1px solid ${Color.DarkGrey};
+  background: ${Color.Wood};
 `;
 
 const StringContainer = styled.div`
@@ -32,7 +33,6 @@ const StringContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  z-index: -10;
   left: 10%;
 `;
 
