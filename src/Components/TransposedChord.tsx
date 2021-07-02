@@ -15,10 +15,11 @@ const StyledCircle = styled.div`
   height: 6rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   p {
     font-size: 4rem;
-    height: 4rem;
+    height: auto;
     margin: 0;
     margin-bottom: 78px;
     margin-block-end: 0;

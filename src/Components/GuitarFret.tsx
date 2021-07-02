@@ -70,7 +70,7 @@ const GuitarFret: FC<GuitarFretProp> = ({
 
   const dotShouldBeVisible = (toBePlayedAt: fretType) => {
     if (capoFret > 0) {
-      return !!toBePlayedAt && visuallyFirstFretThatCanBePlayed != toBePlayedAt
+      return !!toBePlayedAt && visuallyFirstFretThatCanBePlayed !== toBePlayedAt
         ? toBePlayedAt
         : null;
     }

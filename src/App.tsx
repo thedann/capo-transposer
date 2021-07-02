@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import './App.css';
@@ -6,7 +6,7 @@ import CapoSelector from './Components/CapoSelector';
 import ChordSelector from './Components/ChordSelector';
 import GuitarNeck from './Components/GuitarNeck';
 import TransposedChord from './Components/TransposedChord';
-import ApplicationContextProvider, { AppContext } from './Context/Context';
+import ApplicationContextProvider from './Context/Context';
 import MediaQueries from './Helpers/MediaQueries';
 
 const BodyWrapper = styled.div`

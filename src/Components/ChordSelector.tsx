@@ -1,11 +1,9 @@
 import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
-import { allBaseChords, Chord } from '../Helpers/Chords';
-import Color from '../Helpers/Colors';
-import { AppContext } from '../Context/Context';
 import { StyledUl } from '../CommonStyling';
-
-
+import { AppContext } from '../Context/Context';
+import { allBaseChords } from '../Helpers/Chords';
+import Color from '../Helpers/Colors';
 
 const StyledLi = styled.li<{ selected?: boolean }>`
   font-size: 2rem;
