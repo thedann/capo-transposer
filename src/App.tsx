@@ -35,8 +35,13 @@ const ChordWrapper = styled.div`
 `;
 
 const StyledTransposedTo = styled.div`
-  font-size: 2rem;
-  margin: 1rem 0;
+  font-size: 1.5rem;
+  margin: 0.75rem 0;
+
+  @media ${MediaQueries.aboveTablet} {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
 `;
 
 function App() {

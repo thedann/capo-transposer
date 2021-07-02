@@ -16,3 +16,9 @@ ul {
 h4 {
   margin: 1rem 0;
 }
+
+@media screen and (max-width: 768px) {
+  h4 {
+    margin: 0.5rem 0;
+  }
+}

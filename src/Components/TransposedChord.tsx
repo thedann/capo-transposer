@@ -2,29 +2,38 @@ import { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { AppContext } from '../Context/Context';
 import { allBaseChords } from '../Helpers/Chords';
+import MediaQueries from '../Helpers/MediaQueries';
 
-const StyledChord = styled.div`
+const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const StyledCircle = styled.div`
+const StyledBackground = styled.div`
   border: 1px solid yellowgreen;
   background: yellowgreen;
   width: 100%;
-  height: 6rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
   p {
-    font-size: 4rem;
+    font-size: 2.5rem;
     height: auto;
     margin: 0;
     margin-bottom: 78px;
     margin-block-end: 0;
     margin-block-start: 0;
+  }
 
+  @media ${MediaQueries.aboveTablet} {
+    height: 6rem;
+
+    p {
+      font-size: 4rem;
+
+    }
   }
 `;
 
@@ -46,11 +55,11 @@ const TransposedChord: FC = () => {
   };
 
   return (
-    <StyledChord>
-      <StyledCircle>
+    <StyledWrapper>
+      <StyledBackground>
         <p>{transpose()}</p>
-      </StyledCircle>
-    </StyledChord>
+      </StyledBackground>
+    </StyledWrapper>
   );
 };
 
