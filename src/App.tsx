@@ -29,9 +29,11 @@ const MainWrapper = styled.div`
 const ChordWrapper = styled.div`
   display: flex;
   max-height: 20rem;
-  height: 30rem;
   flex-direction: column;
   justify-content: space-between;
+  @media ${MediaQueries.aboveTablet} { 
+    max-height: 25rem;
+  }
 `;
 
 const StyledTransposedTo = styled.div`

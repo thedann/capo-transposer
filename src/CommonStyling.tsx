@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Color from './Helpers/Colors';
+import MediaQueries from './Helpers/MediaQueries';
 
 export const StyledUl = styled.ul`
   height: 8rem;
@@ -28,5 +29,10 @@ export const StyledUl = styled.ul`
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: ${Color.DarkGrey};
+  }
+
+  @media ${MediaQueries.aboveTablet} {
+    height: 10rem;
+
   }
 `;
