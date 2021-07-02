@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { AppContext } from '../Context/Context';
 import chordGrip from '../Helpers/ChordGrip';
 import Color from '../Helpers/Colors';
-import { fretType } from '../Helpers/FretType';
 import GuitarFret from './GuitarFret';
 import GuitarString from './GuitarString';
 

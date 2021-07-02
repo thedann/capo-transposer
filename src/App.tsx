@@ -40,8 +40,6 @@ const StyledTransposedTo = styled.div`
 `;
 
 function App() {
-  const { capoFret } = useContext(AppContext);
-
   return (
     <ApplicationContextProvider>
       <Helmet>

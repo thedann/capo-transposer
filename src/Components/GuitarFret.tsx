@@ -1,7 +1,6 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { AppContext } from '../Context/Context';
-import chordGrip from '../Helpers/ChordGrip';
 import { Chord } from '../Helpers/Chords';
 import { fretType } from '../Helpers/FretType';
 
