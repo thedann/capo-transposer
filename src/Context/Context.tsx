@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState, ReactNode } from "react";
+import { createContext } from "react";
 import { Chord } from "../Helpers/Chords";
 
 export type AppContextType = {
