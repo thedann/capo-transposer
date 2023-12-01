@@ -1,22 +1,15 @@
 {
   "files": {
-    "main.css": "/capo-transposer/static/css/main.b80a14ea.chunk.css",
-    "main.js": "/capo-transposer/static/js/main.28918010.chunk.js",
-    "main.js.map": "/capo-transposer/static/js/main.28918010.chunk.js.map",
-    "runtime-main.js": "/capo-transposer/static/js/runtime-main.36397c62.js",
-    "runtime-main.js.map": "/capo-transposer/static/js/runtime-main.36397c62.js.map",
-    "static/js/2.d1388b62.chunk.js": "/capo-transposer/static/js/2.d1388b62.chunk.js",
-    "static/js/2.d1388b62.chunk.js.map": "/capo-transposer/static/js/2.d1388b62.chunk.js.map",
-    "static/js/3.30d37fa4.chunk.js": "/capo-transposer/static/js/3.30d37fa4.chunk.js",
-    "static/js/3.30d37fa4.chunk.js.map": "/capo-transposer/static/js/3.30d37fa4.chunk.js.map",
+    "main.css": "/capo-transposer/static/css/main.77445124.css",
+    "main.js": "/capo-transposer/static/js/main.f5bfe054.js",
+    "static/js/496.c0c0d1f8.chunk.js": "/capo-transposer/static/js/496.c0c0d1f8.chunk.js",
     "index.html": "/capo-transposer/index.html",
-    "static/css/main.b80a14ea.chunk.css.map": "/capo-transposer/static/css/main.b80a14ea.chunk.css.map",
-    "static/js/2.d1388b62.chunk.js.LICENSE.txt": "/capo-transposer/static/js/2.d1388b62.chunk.js.LICENSE.txt"
+    "main.77445124.css.map": "/capo-transposer/static/css/main.77445124.css.map",
+    "main.f5bfe054.js.map": "/capo-transposer/static/js/main.f5bfe054.js.map",
+    "496.c0c0d1f8.chunk.js.map": "/capo-transposer/static/js/496.c0c0d1f8.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.36397c62.js",
-    "static/js/2.d1388b62.chunk.js",
-    "static/css/main.b80a14ea.chunk.css",
-    "static/js/main.28918010.chunk.js"
+    "static/css/main.77445124.css",
+    "static/js/main.f5bfe054.js"
   ]
 }
