@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import CapoSelector from "../Components/CapoSelector";
-import ApplicationContextProvider, { AppContext } from "../Context/Context";
+import { AppContext } from "../Context/Context";
 import { Chord } from "../Helpers/Chords";
 import userEvent from "@testing-library/user-event";
 
