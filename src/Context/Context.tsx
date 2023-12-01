@@ -1,7 +1,7 @@
-import React, { createContext, useCallback, useState } from 'react';
-import { Chord } from '../Helpers/Chords';
+import React, { createContext, useCallback, useState } from "react";
+import { Chord } from "../Helpers/Chords";
 
-type AppContextType = {
+export type AppContextType = {
   capoFret: number;
   updateCapo: (capoFret: number) => void;
   currentChord: Chord;
@@ -10,9 +10,9 @@ type AppContextType = {
 
 export const AppContext = createContext<AppContextType>({
   capoFret: 0,
-  updateCapo: () => console.log('no context provider'),
+  updateCapo: () => console.log("no context provider"),
   currentChord: Chord.C,
-  updateCurrentChord: () => console.log('no context provider'),
+  updateCurrentChord: () => console.log("no context provider"),
 });
 
 const ApplicationContextProvider: React.FC = ({ children }) => {
